@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-<html lang="ko">
+<!-- 글쓰기 페이지 -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판 글쓰기</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>글쓰기 페이지</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'index.css' %}"/>
+    <link rel="stylesheet" href="{% static 'index1.css' %}">
+    <link rel="shortcut icon" href="imgs/instagram.png">
 </head>
+
 <body>
-    <header>
-        <div class="homebox">
-            <div>
-                <a href="index.html" class="logo"></a>
+    <section id="container">
+        <div id="main_container">
+            <!-- 상단바 -->
+            <div class="top_menu">
+                <div class="back_button">
+                    
+                </div>
+                <div class="page_name">챗 GPT</div>
+                <div class="home_button">
+                    <a href="/"></a>
+                </div>
+            </div>    
+
+            <div class="post_form_container">
+                <form action="" class="post_form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="preview">
+                        
+                    </div>
+
+                    <p>
+                        <textarea name="contents" id="text_field" cols="50" rows="5" maxlength="300" placeholder="여기 작성해주세요" required="required" onkeyup="check_length(this)" onkeypress="check_enter()"></textarea>
+                    </p>
+                    <input class="submit_btn" type="submit" value="입력" style="display:flex; justify-content:center;">
+
+                    
+
+                    <p>
+                        <textarea id="text_field" cols="50" rows="5" maxlength="300" required="required" onkeyup="check_length(this)" onkeypress="check_enter()"> {{error}} </textarea>
+                    </p></div>
+
+                </form>
+                
             </div>
         </div>
-    </header>
-
- 
-    <main>
-        <form class="write">
-            <input type="text" placeholder="내용을 입력해주세요." class="text" required>
-            <div class="button">
-                <p><button>입력</button></p>
-            </div>
-        </form>
-    </main>
-
+        
+    </section>
 </body>
+
+
 </html>
