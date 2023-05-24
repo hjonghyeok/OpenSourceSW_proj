@@ -1,0 +1,214 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+/* Top_bar */
+.top_menu {
+	display: flex;
+	height: 50px;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	background-color: white;
+	z-index: 100;
+	top: 0;
+}
+
+.back_button {
+	margin-top: 4px;
+	margin-left: 20px;
+}
+
+.page_name {
+	color: #9ed3ba;
+	font-weight: bold;
+	margin-top: 2px;
+	font-size: 20px;
+}
+
+.home_button {
+	margin-top: 4px;
+	margin-right: 20px;
+}
+/*  */
+
+#imageCanvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events:none;
+}
+
+#img_id{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.post_form_container{
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+
+.post_form{
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    margin: 0 0 10px;
+}
+
+.post_form .title{
+    margin: 0 10px 40px;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+.post_form .preview{
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.post_form .preview .upload{
+    max-width: 300px;
+    height: 300px;
+    border: 1px solid #e6e6e6;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.plus_icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 1px solid dodgerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.plus_icon span{
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 30px;
+    background: dodgerblue;
+
+}
+
+.plus_icon span:nth-child(2){
+    transform:rotate(90deg);
+}
+
+.post_form p{
+    margin-bottom: 20px;
+}
+
+.post_form input[type=file]{
+    width: 100%;
+    background: 0 0;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #262626;
+    font-size: 14px;
+    padding: 7px 8px 7px;
+}
+
+
+.post_form textarea{
+    width: 100%;
+    height: 150px;
+    background: 0 0;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #262626;
+    font-size: 14px;
+    padding: 7px 8px 7px;
+    resize: none;
+}
+
+#text_field{
+
+}
+
+
+
+.submit_btn {
+    font-size: 15px;
+	font-weight: bold;
+    width: 100px;
+	text-decoration: none;
+	margin: auto;
+	background: #9ed3ba;
+	color: #fff;
+	text-align: center;
+	border-radius: 10em;
+	padding: 0.5em 1em 0.5em 1em;
+}
+
+#container {
+    background: #fafafa;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#main_container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    order: 1;
+}
+
+
+#main_container .b_inner{
+    width:935px;
+    position: relative;
+}
+
+
+/* 파일 선택 버튼 */
+.filebox{
+    display: flex;
+    justify-content: center;
+}
+.image_select_block{
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.filebox label {
+    font-size: 15px;
+	font-weight: bold;
+    width: 100px;
+	text-decoration: none;
+	margin: auto;
+	background: #9ed3ba;
+	color: #fff;
+	text-align: center;
+	border-radius: 10em;
+	padding: 0.5em 1em 0.5em 1em;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
