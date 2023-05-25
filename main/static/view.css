@@ -3,7 +3,7 @@
         width: 700px; margin: 0 auto;
         border-top: 3px solid gray; border-bottom: 3px solid gray;
     }
-    .detail .name {margin: 0 0 0 15px; float: left;}
+    .detail .name {margin: 0 0 0 15px; float: center; font-size : 30px;}
     .detail .date {margin: 0 15px 0 0; float: right;}
     .detail .box {
         white-space: pre-line; padding: 10px;
