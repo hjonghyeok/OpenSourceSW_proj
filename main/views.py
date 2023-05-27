@@ -5,6 +5,7 @@ import os, json
 from pathlib import Path
 from googletrans import Translator
 from django.core.exceptions import ImproperlyConfigured
+import my_settings
 
 
 # def translate_text(text, target_language):
@@ -15,26 +16,29 @@ from django.core.exceptions import ImproperlyConfigured
 
 # 번역할 텍스트
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
-secret_file = os.path.join(BASE_DIR, 'secrets.json') # secrets.json 파일 위치를 명시
+# secret_file = os.path.join(BASE_DIR, 'secrets.json') # secrets.json 파일 위치를 명시
 
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
+# with open('secrets.json') as f:
+#     secrets = json.loads(f.read())
 
 
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
+openai.organization =  my_settings.GPT_ORGANIZATION_ID
+openai.api_key = my_settings.GPT_SECRET_KEY
+
+# def get_secret(setting, secrets=secrets):
+#     try:
+#         return secrets[setting]
+#     except KeyError:
+#         error_msg = "Set the {} environment variable".format(setting)
+#         raise ImproperlyConfigured(error_msg)
 
 
 
 def chat_with_gpt_summary(prompt):
-    openai.organization =  get_secret("GPT_ORGANIZATION_ID")
-    openai.api_key = get_secret("GPT_SECRET_KEY")
+    # openai.organization =  get_secret("GPT_ORGANIZATION_ID")
+    # openai.api_key = get_secret("GPT_SECRET_KEY")
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # ChatGPT 모델 선택
@@ -47,8 +51,8 @@ def chat_with_gpt_summary(prompt):
     return reply
 
 def chat_with_gpt_correction(prompt):
-    openai.organization =  get_secret("GPT_ORGANIZATION_ID")
-    openai.api_key = get_secret("GPT_SECRET_KEY")
+    # openai.organization =  get_secret("GPT_ORGANIZATION_ID")
+    # openai.api_key = get_secret("GPT_SECRET_KEY")
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # ChatGPT 모델 선택
@@ -61,8 +65,8 @@ def chat_with_gpt_correction(prompt):
     return reply
 
 def chat_with_gpt_creation(prompt):
-    openai.organization =  get_secret("GPT_ORGANIZATION_ID")
-    openai.api_key = get_secret("GPT_SECRET_KEY")
+    # openai.organization =  get_secret("GPT_ORGANIZATION_ID")
+    # openai.api_key = get_secret("GPT_SECRET_KEY")
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # ChatGPT 모델 선택
