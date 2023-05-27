@@ -29,19 +29,25 @@
                 <form action="" class="post_form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
+
                     <div class="preview">
                         
                     </div>
 
                     <p>
-                        <textarea name="contents" id="text_field" cols="50" rows="5" maxlength="300" placeholder="여기 작성해주세요" required="required" onkeyup="check_length(this)" onkeypress="check_enter()"></textarea>
+                        <textarea name="contents" id="text_field" cols="50" rows="5" maxlength="300" placeholder="여기 작성해주세요 (최대 300자)" required="required" onkeyup="check_length(this)" onkeypress="check_enter()"></textarea>
                     </p>
+                    <select name="write_category" id="write_category">
+                        <option value="summary">문장 요약</option>
+                        <option value="creation">문장 생성</option>
+                        <option value="correction">글 첨삭</option>
+                    </select>
                     <input class="submit_btn" type="submit" value="입력" style="display:flex; justify-content:center;">
 
                     
 
                     <p>
-                        <textarea id="text_field" cols="50" rows="5" maxlength="300" required="required" onkeyup="check_length(this)" onkeypress="check_enter()"> {{error}} </textarea>
+                        <textarea id="text_field" cols="50" rows="5" required="required" onkeyup="check_length(this)" onkeypress="check_enter()"> {{response}} </textarea>
                     </p></div>
 
                 </form>

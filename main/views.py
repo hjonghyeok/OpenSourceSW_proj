@@ -32,31 +32,62 @@ def get_secret(setting, secrets=secrets):
 
 
 
-
-
-def chat_with_gpt(prompt):
-    
+def chat_with_gpt_summary(prompt):
     openai.organization =  get_secret("GPT_ORGANIZATION_ID")
     openai.api_key = get_secret("GPT_SECRET_KEY")
 
-    
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # ChatGPT 모델 선택
         messages=[
             {"role": "system", "content": "Please write in Korean language."},
-            {"role": "user", "content": prompt}]
+            {"role": "user", "content": prompt},
+            {"role": "system", "content": "한문장으로 요약해줘"}]
     )
     reply = response["choices"][0]["message"]["content"]
     return reply
 
-def index(request):
+def chat_with_gpt_correction(prompt):
+    openai.organization =  get_secret("GPT_ORGANIZATION_ID")
+    openai.api_key = get_secret("GPT_SECRET_KEY")
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # ChatGPT 모델 선택
+        messages=[
+            {"role": "system", "content": "Please write in Korean language."},
+            {"role": "user", "content": prompt},
+            {"role": "system", "content": "글을 첨삭해줘."}]
+    )
+    reply = response["choices"][0]["message"]["content"]
+    return reply
+
+def chat_with_gpt_creation(prompt):
+    openai.organization =  get_secret("GPT_ORGANIZATION_ID")
+    openai.api_key = get_secret("GPT_SECRET_KEY")
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # ChatGPT 모델 선택
+        messages=[
+            {"role": "system", "content": "Please write in Korean language."},
+            {"role": "user", "content": prompt},
+            {"role": "system", "content": "글을 이어서 완성해줘."}]
+    )
+    reply = response["choices"][0]["message"]["content"]
+    return reply
+
     # text_to_translate = "번역기능 성공"
     # # 번역 실행
     # translated_text = translate_text(text_to_translate, 'en')
-
+def index(request):
     if request.method == 'GET':
         return render(request, "index.html")
     else:
         chat_prompt = request.POST.get('contents', None)
-        response = chat_with_gpt(chat_prompt)
-        return render(request, "index.html", {'error':response})
+        option = request.POST.get('write_category', None)
+        if option == 'summary':
+            response = chat_with_gpt_summary(chat_prompt)
+        elif option == 'creation':
+            response = chat_with_gpt_creation(chat_prompt)
+        else:
+            response = chat_with_gpt_correction(chat_prompt)
+        return render(request, "index.html", {'response':response})
+
